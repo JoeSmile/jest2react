@@ -1,9 +1,22 @@
 import React, {Component, PropTypes} from 'react'
+export class List extends Component {
+    render() {
+       const list = this.props.list.length ? this.props.list : ['empty']
+       const ret = list.map((item,index) => {
+                return <li key={index}>{item}</li>
+            })
 
-export default class AddTodoView extends Component {
+        return <ul>{ret}</ul>
+    }
+}
+
+export class AddTodoView extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            num: this.props.num || 0
+        }
     }
 
     componentReceiveProps(nextProps) {
@@ -20,19 +33,23 @@ export default class AddTodoView extends Component {
         }
     }
 
-    renderList = () => {
-        return this.props.list.map((item) => {
-            return <li>{item}</li>
+    addOne = () => {
+        this.setState({
+            num: this.state.num ++
         })
     }
 
+    doGetData = () => {
+
+    }
+
     render() {
-        const list = this.renderList()
         return (
             <div>
-                {
-                    list
-                }
+                <List list={this.props.list}/>
+                <div className="one"></div>
+                <div className="addone" onClick={this.addOne}>{this.state.num}</div>
+                <div className="getData" onClick={this.doGetData}>getData</div>
                 <input
                     type="text"
                     placeholder='input todo item'
@@ -44,5 +61,7 @@ export default class AddTodoView extends Component {
 }
 
 AddTodoView.propTypes = {
-    onAddClick: PropTypes.func.isRequired
+    onAddClick: PropTypes.func.isRequired,
+    list: PropTypes.array,
+    num: PropTypes.number
 }
