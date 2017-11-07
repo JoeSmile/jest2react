@@ -7,10 +7,6 @@ const users = {
 
 export default function request(url) {
   return new Promise((resolve, reject) => {
-    const userID = parseInt(url.substr('/users/'.length), 10);
-    process.nextTick(
-      () =>
-          resolve('Joe')
-    );
+    resolve('Paul')
   });
 }

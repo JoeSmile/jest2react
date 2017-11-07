@@ -9,7 +9,13 @@ import * as user from '../user';
 // Testing promise can be done using `.resolves`.
 it('works with resolves', () => {
   expect.assertions(1);
-  return expect(user.getUserName(5)).toEqual('Paul');
+
+  //  这里必须写一个return
+  return user.getUserName(5).then(res => {
+    console.log('res',res)
+    expect(res).toEqual("Paul")
+  })
+
 })
 
 // // The assertion for a promise must be returned.
