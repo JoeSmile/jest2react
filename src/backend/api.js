@@ -1,7 +1,7 @@
-const http = require('http');
-
-export default function request(url) {
+export default function request() {
     return new Promise((resolve, reject) => {
-        resolve('real test')
+        setTimeout(function () {
+            resolve('real test')
+        }, 200)
     })
 }

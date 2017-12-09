@@ -1,6 +1,8 @@
 import {connect} from 'react-redux'
+
 import AddTooView from '../components/AddTodoView'
-import {addTodo} from '../actions'
+
+import {addTodo, getAsyncData} from '../actions'
 
 const mapState2Props = (state) => {
     return {
@@ -12,6 +14,10 @@ const mapDispatch2Props = (dispatch) => {
     return {
         onAddClick: (text) => {
             dispatch(addTodo(text))
+        },
+        handleGetAsyncRedux: () => {
+            //dispatch one promist
+            dispatch(getAsyncData())
         }
     }
 }
