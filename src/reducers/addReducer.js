@@ -13,8 +13,8 @@ export default createReducer(initialState, {
         list.push(text)
         return {...state, list: list}
     },
-    [GET_ASYNC_DATA](state, {data}) {
-        state.asyncData = data
+    [GET_ASYNC_DATA](state,{ret}) {
+        state.asyncData = ret && "middleware test"
         return {...state}
     }
 })

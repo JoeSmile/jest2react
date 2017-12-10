@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import request from '../backend/api'
+import LiftCircleComponent from './liftCircleComponent'
+
 
 export class List extends Component {
     render() {
@@ -73,6 +75,8 @@ export default class AddTodoView extends Component {
                     placeholder='input todo item'
                     onKeyUp={this.handleClick}
                     ref={(inputRef) => this.inputRef = inputRef}/>
+
+                <LiftCircleComponent greeting={list && list[list.length-1]}/>
             </div>
         )
     }

@@ -10,13 +10,14 @@ export function addTodo(text) {
 }
 
 export function getAsyncData() {
-    return createAction(
-        GET_ASYNC_DATA,
-        async () => {
-            const ret = await request()
-            return ret
-        }
-    )
+    return function (dispatch, getState) {
+        request().then(ret => {
+            dispatch({
+                type: GET_ASYNC_DATA,
+                ret
+            })
+        })
+    }
 }
 
 
